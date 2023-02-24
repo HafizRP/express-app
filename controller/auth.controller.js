@@ -13,10 +13,11 @@ exports.signin = (req, res) => {
       res.status(400).send("Password Invalid");
     }
 
+    req.app.locals.user = user;
+
     // When password and username valid
-    res.send({ user: user });
+    res.redirect("/home");
   } catch (error) {
-    console.log(error);
     res.status(500).send(error);
   }
 };
